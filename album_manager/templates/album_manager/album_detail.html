@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Detalle del Álbum{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-body">
+            <h2 class="card-title">{{ album.title }}</h2>
+            <h5 class="card-subtitle mb-2 text-muted">{{ album.artist.name }}</h5>
+            <p class="card-text"><strong>Año de Lanzamiento:</strong> {{ album.release_year }}</p>
+            <p class="card-text"><strong>Género:</strong> {{ album.genre }}</p>
+
+            <div class="mb-3">
+                <img src="{{ album.cover.url }}" alt="{{ album.title }} cover" class="img-fluid" style="max-width: 200px;">
+            </div>
+
+            <div class="d-flex justify-content-between">
+                <a href="{% url 'album_update' pk=album.pk %}" class="btn btn-warning">Editar</a>
+                <a href="{% url 'album_delete' pk=album.pk %}" class="btn btn-danger">Eliminar</a>
+                <a href="{% url 'album_list' %}" class="btn btn-secondary">Volver a la Lista de Álbumes</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

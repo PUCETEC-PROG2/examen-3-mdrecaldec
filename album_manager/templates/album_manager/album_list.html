@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}Lista de Álbumes{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1 class="mb-4">Lista de Álbumes</h1>
+    <div class="row">
+        {% for album in albums %}
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <img src="{{ album.cover.url }}" alt="{{ album.title }} cover" class="card-img-top" style="max-height: 200px; object-fit: cover;">
+                <div class="card-body">
+                    <h5 class="card-title"><a href="{% url 'album_detail' pk=album.pk %}">{{ album.title }}</a></h5>
+                    <p class="card-text"><strong>Año:</strong> {{ album.release_year }}</p>
+                    <p class="card-text"><strong>Género:</strong> {{ album.genre }}</p>
+                    <p class="card-text"><strong>Artista:</strong> {{ album.artist.name }}</p>
+                    <div class="d-flex justify-content-between">
+                        <a href="{% url 'album_update' pk=album.pk %}" class="btn btn-warning btn-sm">Editar</a>
+                        <a href="{% url 'album_delete' pk=album.pk %}" class="btn btn-danger btn-sm">Eliminar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <a href="{% url 'album_create' %}" class="btn btn-primary">Crear un nuevo Álbum</a>
+</div>
+{% endblock %}

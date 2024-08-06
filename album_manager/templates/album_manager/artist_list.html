@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block title %}Lista de Artistas{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h1 class="mb-4">Lista de Artistas</h1>
+    
+    <div class="row">
+        {% for artist in artists %}
+        <div class="col-md-4 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title"><a href="{% url 'artist_detail' pk=artist.pk %}">{{ artist.name }}</a></h5>
+                    <p class="card-text">{{ artist.country_of_origin }}</p>
+                    <a href="{% url 'artist_update' pk=artist.pk %}" class="btn btn-warning">Editar</a>
+                    <a href="{% url 'artist_delete' pk=artist.pk %}" class="btn btn-danger">Eliminar</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    
+    <a href="{% url 'artist_create' %}" class="btn btn-success">Crear un nuevo Artista</a>
+</div>
+{% endblock %}

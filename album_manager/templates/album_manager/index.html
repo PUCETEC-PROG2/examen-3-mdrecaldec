@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Catálogo de Discos de Música{% endblock %}
+
+{% block content %}
+<div class="container text-center mt-5">
+    <h1 class="my-4 display-4">Catálogo de Discos de Música</h1>
+    <p class="lead mb-4">Navega por los artistas y álbumes con los siguientes enlaces:</p>
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-4 mb-3">
+            <a href="{% url 'artist_list' %}" class="btn btn-primary btn-lg btn-block rounded-pill shadow-sm">Ver Artistas</a>
+        </div>
+        <div class="col-md-6 col-lg-4 mb-3">
+            <a href="{% url 'album_list' %}" class="btn btn-secondary btn-lg btn-block rounded-pill shadow-sm">Ver Álbumes</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

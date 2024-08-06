@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %}Detalle del Artista{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="card">
+        {% if artist.image %}
+        <img src="{{ artist.image.url }}" class="card-img-top" alt="{{ artist.name }}">
+        {% else %}
+        <img src="{% static 'images/default_artist.jpg' %}" class="card-img-top" alt="Imagen predeterminada">
+        {% endif %}
+        <div class="card-body">
+            <h2 class="card-title">{{ artist.name }}</h2>
+            <p class="card-text">País de Origen: {{ artist.country_of_origin }}</p>
+            
+            <a href="{% url 'artist_update' pk=artist.pk %}" class="btn btn-warning me-2">Editar</a>
+            <a href="{% url 'artist_delete' pk=artist.pk %}" class="btn btn-danger me-2">Eliminar</a>
+            <a href="{% url 'artist_list' %}" class="btn btn-secondary">Volver a la lista de Artistas</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
